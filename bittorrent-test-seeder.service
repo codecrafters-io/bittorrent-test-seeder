@@ -4,6 +4,8 @@ Description=Seeder App Service
 [Service]
 WorkingDirectory=/var/opt/seeder-app
 ExecStart=/var/opt/seeder-app/main
+StandardOutput=file:/var/log/seeder-app.log
+StandardError=file:/var/log/seeder-app.log
 Restart=always
 
 [Install]
