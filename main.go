@@ -13,7 +13,7 @@ func main() {
 	println("Hello, World!")
 
 	config := torrent.DefaultConfig
-	config.Host = "137.66.12.135"
+	// config.Host = "137.66.12.135"
 
 	// Random database name every time
 	rand.Seed(time.Now().UnixNano())
