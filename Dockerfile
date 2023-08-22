@@ -1,10 +1,11 @@
-FROM alpine:latest
+FROM golang:alpine
 
-RUN apk add --no-cache transmission-cli
-RUN apk add --no-cache aria2
+ADD main.go /app/main.go
+ADD go.mod /app/go.mod
+ADD go.sum /app/go.sum
+
+RUN cd /app && go build -o seeder && mv seeder /bin/seeder
 
 ADD torrent_files /etc/torrent_files
-# ADD transmission-settings.json /root/.config/transmission/settings.json
-ADD seeder.sh /bin/seeder.sh
 
-CMD ["/bin/seeder.sh"]
+CMD ["/bin/seeder"]
