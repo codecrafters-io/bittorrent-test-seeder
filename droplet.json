@@ -17,26 +17,28 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": ["curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"]
+      "inline": [
+        "curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"
+      ]
     },
     {
       "type": "shell",
-      "inline": ["mkdir -p /var/opt/seeder-app"]
+      "inline": ["sudo mkdir -p /var/opt/seeder-app"]
     },
     {
       "type": "file",
       "source": "go.mod",
-      "destination": "/var/opt/seeder-app/go.mod"
+      "destination": "/var/opt/seeder-app/"
     },
     {
       "type": "file",
       "source": "go.sum",
-      "destination": "/var/opt/seeder-app/go.sum"
+      "destination": "/var/opt/seeder-app/"
     },
     {
       "type": "file",
       "source": "main.go",
-      "destination": "/var/opt/seeder-app/main.go"
+      "destination": "/var/opt/seeder-app/"
     },
     {
       "type": "shell",
