@@ -49,5 +49,6 @@ func main() {
 		fmt.Printf("Uploaded Bytes: %d\n", session.Stats().BytesUploaded)
 		time.Sleep(5 * time.Second)
 		fmt.Printf("Torrent Status: %s\n", torrent.Stats().Status)
+		fmt.Printf("Torrent Peers Count: %d\n", torrent.Stats().Peers)
 	}
 }
