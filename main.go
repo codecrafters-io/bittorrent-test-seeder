@@ -16,7 +16,7 @@ func main() {
 	config.Host = "137.66.12.135"
 
 	// Random database name every time
-	rand.Seed(time.Now().UnixNano()) 
+	rand.Seed(time.Now().UnixNano())
 	config.Database = fmt.Sprintf("/tmp/database/%d", rand.Int())
 
 	config.PortBegin = 51413
@@ -32,7 +32,7 @@ func main() {
 		panic(err)
 	}
 
-	file, err := os.Open("torrent_files/congratulations.gif.torrent")
+	file, err := os.Open("/etc/torrent_files/congratulations.gif.torrent")
 	if err != nil {
 		panic(err)
 	}
