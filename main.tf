@@ -1,3 +1,24 @@
+variable "do_token" {
+  type = string
+}
+
+terraform {
+  required_providers {
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.0"
+    }
+  }
+
+  backend "remote" {
+    organization = "codecrafters"
+
+    workspaces {
+      name = "bittorrent-test-seeder"
+    }
+  }
+}
+
 provider "digitalocean" {
   token = var.do_token
 }
