@@ -51,8 +51,8 @@
     {
       "type": "shell",
       "inline": [
-        "sudo systemctl enable my-go-app.service",
-        "sudo systemctl start my-go-app.service"
+        "sudo systemctl enable bittorrent-test-seeder.service",
+        "sudo systemctl start bittorrent-test-seeder.service"
       ]
     }
   ]
