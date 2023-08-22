@@ -10,4 +10,4 @@ exec aria2c \
     --bt-enable-lpd=false \
     --bt-external-ip="137.66.12.135" \
     -d /etc/torrent_files \
-    congratulations.gif.torrent
+    /etc/torrent_files/congratulations.gif.torrent
