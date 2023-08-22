@@ -1,0 +1,53 @@
+{
+  "variables": {
+    "do_api_token": "{{ env `PACKER_DO_TOKEN` }}"
+  },
+  "builders": [
+    {
+      "type": "digitalocean",
+      "api_token": "{{user `do_api_token`}}",
+      "image": "ubuntu-18-04-x64",
+      "region": "nyc3",
+      "size": "s-1vcpu-1gb",
+      "ssh_username": "root",
+      "snapshot_name": "bittorrent-test-seeder-v1",
+      "monitoring": false
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"]
+    },
+    {
+      "type": "shell",
+      "inline": ["mkdir -p /var/opt/seeder-app"]
+    },
+    {
+      "type": "file",
+      "source": "go.mod",
+      "destination": "/var/opt/seeder-app/go.mod"
+    },
+    {
+      "type": "file",
+      "source": "go.sum",
+      "destination": "/var/opt/seeder-app/go.sum"
+    },
+    {
+      "type": "file",
+      "source": "main.go",
+      "destination": "/var/opt/seeder-app/main.go"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get install -y golang",
+        "cd /var/opt/seeder-app",
+        "go get",
+        "go build main.go",
+        "nohup ./main &"
+      ]
+    }
+  ]
+}
