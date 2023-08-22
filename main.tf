@@ -24,7 +24,7 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_floating_ip" "floating_ip" {
-  region = "nyc3"
+  region = "lon1"
 }
 
 data "digitalocean_droplet_snapshot" "image" {

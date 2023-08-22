@@ -27,7 +27,7 @@
     },
     {
       "type": "shell",
-      "inline": ["mkdir -p /var/opt/seeder-app"]
+      "inline": ["mkdir -p /var/opt/seeder-app", "mkdir -p /etc/systemd/system"]
     },
     {
       "type": "file",
