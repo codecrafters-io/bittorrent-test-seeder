@@ -17,6 +17,3 @@ min_machines_running = 1
 
 [[services.ports]]
 port = 51413
-
-[processes]
-seeder = "/bin/seeder.sh"
