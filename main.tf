@@ -35,10 +35,13 @@ data "digitalocean_droplet_snapshot" "image" {
 
 
 resource "digitalocean_droplet" "droplet" {
-  image  = data.digitalocean_droplet_snapshot.image.id
-  name   = "bittorrent-test-seeder"
-  region = "lon1"
-  size   = "s-1vcpu-1gb"
+  image      = data.digitalocean_droplet_snapshot.image.id
+  name       = "bittorrent-test-seeder"
+  region     = "lon1"
+  size       = "s-1vcpu-1gb"
+  monitoring = true
+
+  ssh_keys = ["28:77:85:1e:fa:ab:dd:45:23:3a:3b:c3:30:90:d6:7c"]
 }
 
 resource "digitalocean_floating_ip_assignment" "my_floating_ip_assignment" {
