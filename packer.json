@@ -23,21 +23,11 @@
     },
     {
       "type": "shell",
-      "inline": ["sudo mkdir -p /var/opt/seeder-app"]
+      "inline": ["mkdir -p /var/opt/seeder-app"]
     },
     {
       "type": "file",
-      "source": "go.mod",
-      "destination": "/var/opt/seeder-app/"
-    },
-    {
-      "type": "file",
-      "source": "go.sum",
-      "destination": "/var/opt/seeder-app/"
-    },
-    {
-      "type": "file",
-      "source": "main.go",
+      "sources": ["go.mod", "go.sum", "main.go"],
       "destination": "/var/opt/seeder-app/"
     },
     {
