@@ -28,7 +28,7 @@ resource "digitalocean_floating_ip" "floating_ip" {
 }
 
 data "digitalocean_droplet_snapshot" "image" {
-  name        = "bittorrent-test-seeder-v1"
+  name        = "bittorrent-test-seeder-v3"
   most_recent = true
   region      = "lon1"
 }
