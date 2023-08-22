@@ -6,7 +6,7 @@
     {
       "type": "digitalocean",
       "api_token": "{{ user `do_api_token` }}",
-      "snapshot_name": "bittorrent-test-seeder-v2",
+      "snapshot_name": "bittorrent-test-seeder-v3",
       "image": "ubuntu-22-04-x64",
       "region": "lon1",
       "size": "s-1vcpu-1gb",
