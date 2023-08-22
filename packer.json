@@ -4,22 +4,15 @@
   },
   "builders": [
     {
-      "type": "digitalocean",
-      "api_token": "{{user `do_api_token`}}",
-      "image": "ubuntu-18-04-x64",
-      "region": "nyc3",
-      "size": "s-1vcpu-1gb",
-      "ssh_username": "root",
-      "snapshot_name": "bittorrent-test-seeder-v1",
-      "monitoring": false
+      "type": "docker",
+      "image": "ubuntu",
+      "commit": true
     }
   ],
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"
-      ]
+      "inline": ["apt-get update", "apt-get install -y curl golang"]
     },
     {
       "type": "shell",
@@ -31,15 +24,13 @@
       "destination": "/var/opt/seeder-app/"
     },
     {
+      "type": "file",
+      "source": "torrent_files",
+      "destination": "/etc/torrent_files"
+    },
+    {
       "type": "shell",
-      "inline": [
-        "sudo apt-get update",
-        "sudo apt-get install -y golang",
-        "cd /var/opt/seeder-app",
-        "go get",
-        "go build main.go",
-        "nohup ./main &"
-      ]
+      "inline": ["cd /var/opt/seeder-app", "go get", "go build main.go"]
     }
   ]
 }

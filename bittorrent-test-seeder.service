@@ -1,0 +1,10 @@
+[Unit]
+Description=Seeder App Service
+
+[Service]
+WorkingDirectory=/var/opt/seeder-app
+ExecStart=/var/opt/seeder-app/main
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
