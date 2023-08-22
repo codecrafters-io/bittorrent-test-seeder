@@ -27,8 +27,15 @@ resource "digitalocean_floating_ip" "floating_ip" {
   region = "nyc3"
 }
 
+data "digitalocean_droplet_snapshot" "image" {
+  name        = "bittorrent-test-seeder-v1"
+  most_recent = true
+  region      = "lon1"
+}
+
+
 resource "digitalocean_droplet" "droplet" {
-  image  = "bittorrent-test-seeder-v1"
+  image  = data.digitalocean_droplet_snapshot.image.id
   name   = "bittorrent-test-seeder"
   region = "lon1"
   size   = "s-1vcpu-1gb"

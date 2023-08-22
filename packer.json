@@ -17,7 +17,9 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": ["curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"]
+      "inline": [
+        "curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"
+      ]
     },
     {
       "type": "shell",
@@ -36,6 +38,11 @@
       "type": "file",
       "source": "torrent_files",
       "destination": "/etc/torrent_files"
+    },
+    {
+      "type": "file",
+      "source": "bittorrent-test-seeder.service",
+      "destination": "/etc/systemd/system/bittorrent-test-seeder.service"
     },
     {
       "type": "shell",
