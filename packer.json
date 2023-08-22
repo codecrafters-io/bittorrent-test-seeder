@@ -17,6 +17,10 @@
   "provisioners": [
     {
       "type": "shell",
+      "inline": ["curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"]
+    },
+    {
+      "type": "shell",
       "inline": ["apt-get update", "apt-get install -y curl golang"]
     },
     {
