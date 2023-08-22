@@ -18,6 +18,7 @@ func main() {
 	// Random database name every time
 	rand.Seed(time.Now().UnixNano())
 	config.Database = fmt.Sprintf("/tmp/database/%d", rand.Int())
+	config.DataDir = "/etc/torrent_files"
 
 	config.PortBegin = 51413
 	config.PortEnd = 51414
@@ -44,11 +45,8 @@ func main() {
 
 	for {
 		torrent.Announce()
-		fmt.Printf("Torrents: %d\n", session.Stats().Torrents)
-		fmt.Printf("Downloaded Bytes: %d\n", session.Stats().BytesDownloaded)
-		fmt.Printf("Uploaded Bytes: %d\n", session.Stats().BytesUploaded)
-		time.Sleep(5 * time.Second)
-		fmt.Printf("Torrent Status: %s\n", torrent.Stats().Status)
-		fmt.Printf("Torrent Peers Count: %d\n", torrent.Stats().Peers)
+		fmt.Printf("Torrents: %d, Downloaded: %dB, Uploaded: %dB\n", session.Stats().Torrents, session.Stats().BytesDownloaded, session.Stats().BytesUploaded)
+		fmt.Printf("Torrent Status: %s, Peers Count: %d\n", torrent.Stats().Status, torrent.Stats().Peers.Total)
+		time.Sleep(10 * time.Second)
 	}
 }
