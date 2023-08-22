@@ -9,24 +9,36 @@
       "image": "ubuntu-18-04-x64",
       "region": "nyc3",
       "size": "s-1vcpu-1gb",
-      "ssh_username": "root"
+      "ssh_username": "root",
+      "snapshot_name": "bittorrent-test-seeder-v1",
+      "monitoring": false
     }
   ],
   "provisioners": [
     {
       "type": "shell",
       "inline": [
-        "mkdir -p /var/opt/seeder-app"
+        "curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"
       ]
     },
     {
+      "type": "shell",
+      "inline": ["sudo mkdir -p /var/opt/seeder-app"]
+    },
+    {
       "type": "file",
-      "sources": [
-        "go.mod",
-        "go.sum",
-        "main.go"
-      ],
-      "destination": "/var/opt/seeder-app"
+      "source": "go.mod",
+      "destination": "/var/opt/seeder-app/"
+    },
+    {
+      "type": "file",
+      "source": "go.sum",
+      "destination": "/var/opt/seeder-app/"
+    },
+    {
+      "type": "file",
+      "source": "main.go",
+      "destination": "/var/opt/seeder-app/"
     },
     {
       "type": "shell",
