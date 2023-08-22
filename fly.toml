@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for bittorrent-test-seeder on 2023-08-22T18:18:54+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "bittorrent-test-seeder"
+primary_region = "lhr"
+
+[build]
+
+[[services]]
+internal_port = 51413
+protocol = "tcp"
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 1
+
+[[services.ports]]
+port = 51413
+
+[processes]
+seeder = "/bin/seeder.sh"
