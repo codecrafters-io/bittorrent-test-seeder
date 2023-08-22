@@ -7,7 +7,7 @@
       "type": "digitalocean",
       "api_token": "{{ user `do_api_token` }}",
       "snapshot_name": "bittorrent-test-seeder-v1",
-      "image": "ubuntu-20-04-x64",
+      "image": "ubuntu-22-04-x64",
       "region": "lon1",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
@@ -21,7 +21,7 @@
     },
     {
       "type": "shell",
-      "inline": ["apt-get update", "apt-get install -y curl golang"]
+      "inline": ["apt-get update", "apt-get install -y golang"]
     },
     {
       "type": "shell",
