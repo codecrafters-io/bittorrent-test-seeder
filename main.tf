@@ -42,10 +42,6 @@ provider "heroku" {
   api_key = var.heroku_api_key
 }
 
-# resource "digitalocean_floating_ip" "floating_ip" {
-#   region = "lon1"
-# }
-
 data "digitalocean_droplet_snapshot" "image" {
   name        = "bittorrent-test-seeder-v4"
   most_recent = true
@@ -53,8 +49,9 @@ data "digitalocean_droplet_snapshot" "image" {
 }
 
 resource "digitalocean_droplet" "droplet" {
+  count      = 3
   image      = data.digitalocean_droplet_snapshot.image.id
-  name       = "bittorrent-test-seeder"
+  name       = "bittorrent-test-seeder-${count.index}"
   region     = "lon1"
   size       = "s-1vcpu-1gb"
   monitoring = true
@@ -70,11 +67,6 @@ resource "heroku_app_config_association" "server" {
   app_id = data.heroku_app.bittorrent_test_tracker.id
 
   vars = {
-    EXPOSED_CLIENT_IPS = "${digitalocean_droplet.droplet.ipv4_address}"
+    EXPOSED_CLIENT_IPS = join(",", digitalocean_droplet.droplet.*.ipv4_address)
   }
 }
-
-# resource "digitalocean_floating_ip_assignment" "my_floating_ip_assignment" {
-#   droplet_id = digitalocean_droplet.droplet.id
-#   ip_address = digitalocean_floating_ip.floating_ip.ip_address
-# }
