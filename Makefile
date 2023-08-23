@@ -1,2 +1,2 @@
 serve:
-	docker build -t seeder . && docker run -it seeder /bin/ash
+	go build main.go && ./main
