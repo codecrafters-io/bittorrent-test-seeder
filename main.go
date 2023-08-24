@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"path"
 	"path/filepath"
 	"time"
 
@@ -19,7 +20,15 @@ func main() {
 	// Random database name every time
 	rand.Seed(time.Now().UnixNano())
 	config.Database = fmt.Sprintf("/tmp/database/%d", rand.Int())
-	config.DataDir = "/etc/torrent_files"
+
+	dataDir := os.Getenv("TORRENT_FILES_DIR")
+	if dataDir == "" {
+		dataDir = "/etc/torrent_files"
+	}
+
+	fmt.Printf("DataDir: %s\n", dataDir)
+
+	config.DataDir = dataDir
 
 	config.PortBegin = 51413
 	config.PortEnd = 51500
@@ -37,7 +46,8 @@ func main() {
 	torrents := []*torrent.Torrent{}
 
 	// List all files that match the pattern /etc/torrent_files/*.torrent
-	filePaths, err := filepath.Glob("/etc/torrent_files/*.torrent")
+	
+	filePaths, err := filepath.Glob(path.Join(dataDir, "*.torrent"))
 	if err != nil {
 		panic(err)
 	}
