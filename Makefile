@@ -9,3 +9,6 @@ print_shas:
 
 print_info_hashes:
 	ls torrent_files/*.torrent | xargs -n1 transmission-show | grep Hash
+
+packer_build:
+	packer build packer.json
