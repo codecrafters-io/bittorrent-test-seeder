@@ -43,7 +43,7 @@ provider "heroku" {
 }
 
 data "digitalocean_droplet_snapshot" "image" {
-  name        = "bittorrent-test-seeder-v4"
+  name        = "bittorrent-test-seeder-v5"
   most_recent = true
   region      = "lon1"
 }
