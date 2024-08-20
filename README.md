@@ -1,6 +1,6 @@
 # bittorrent-test-seeder
 
 ```bash
-packer build packer.json
+make packer_build
 terraform apply
 ```
