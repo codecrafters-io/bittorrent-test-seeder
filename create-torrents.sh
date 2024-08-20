@@ -2,6 +2,7 @@
 set -e
 
 rm -rf torrent_files/*.torrent
+rm -rf torrent_files/magnet_links.txt
 
 for folder in torrent_files/*; do
     if [ ! -d "$folder" ]; then
@@ -17,4 +18,5 @@ for folder in torrent_files/*; do
     fi
 
     mktorrent -d --piece-length=$piece_length -a http://bittorrent-test-tracker.codecrafters.io/announce -o torrent_files/$file.torrent torrent_files/$file/$file
+    echo "$file: $(transmission-show -m torrent_files/$file.torrent)" >> torrent_files/magnet_links.txt
 done
