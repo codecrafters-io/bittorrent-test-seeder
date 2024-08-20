@@ -70,3 +70,15 @@ resource "heroku_app_config_association" "server" {
     EXPOSED_CLIENT_IPS = join(",", digitalocean_droplet.droplet.*.ipv4_address)
   }
 }
+
+output "seeder_ip_1" {
+  value = digitalocean_droplet.droplet[0].ipv4_address
+}
+
+output "seeder_ip_2" {
+  value = digitalocean_droplet.droplet[1].ipv4_address
+}
+
+output "seeder_ip_3" {
+  value = digitalocean_droplet.droplet[2].ipv4_address
+}

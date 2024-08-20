@@ -12,3 +12,12 @@ print_info_hashes:
 
 packer_build:
 	packer build packer.json
+
+ssh_1:
+	ssh root@$(shell terraform output -raw seeder_ip_1)
+
+ssh_2:
+	ssh root@$(shell terraform output -raw seeder_ip_2)
+
+ssh_3:
+	ssh root@$(shell terraform output -raw seeder_ip_3)
