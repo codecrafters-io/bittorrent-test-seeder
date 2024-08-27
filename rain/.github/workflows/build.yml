@@ -1,0 +1,67 @@
+name: Go
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.21
+
+      - name: Get dependencies
+        run: go get -v -t -d ./...
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -race -v -covermode atomic -coverprofile=covprofile ./...
+
+      - name: Send coverage
+        uses: shogo82148/actions-goveralls@v1
+        with:
+          path-to-profile: covprofile
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.21
+          cache: false
+
+      - uses: golangci/golangci-lint-action@v5
+        with:
+          version: v1.54
+
+  goreleaser:
+    name: Release
+    needs:
+      - test
+      - lint
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch all tags
+        run: git fetch --force --tags
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.21
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GORELEASER_GITHUB_TOKEN }}

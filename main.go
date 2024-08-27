@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/cenkalti/rain/torrent"
+	"codecrafters.io/bittorrent-test-seeder/rain/torrent"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 	torrents := []*torrent.Torrent{}
 
 	// List all files that match the pattern /etc/torrent_files/*.torrent
-	
+
 	filePaths, err := filepath.Glob(path.Join(dataDir, "*.torrent"))
 	if err != nil {
 		panic(err)
