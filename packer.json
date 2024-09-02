@@ -25,9 +25,10 @@
     {
       "type": "shell",
       "inline": [
-        "wget https://golang.org/dl/go1.21.0.linux-amd64.tar.gz",
+        "wget -q https://golang.org/dl/go1.21.0.linux-amd64.tar.gz",
         "tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz",
-        "echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile"
+        "echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile",
+        ". /etc/profile"
       ]
     },
     {
@@ -51,7 +52,12 @@
     },
     {
       "type": "shell",
-      "inline": ["cd /var/opt/seeder-app", "go get", "go build main.go"]
+      "inline": [
+        "cd /var/opt/seeder-app",
+        ". /etc/profile",
+        "go get",
+        "go build main.go"
+      ]
     },
     {
       "type": "shell",
