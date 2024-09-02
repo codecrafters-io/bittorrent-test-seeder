@@ -12,10 +12,22 @@ import (
 )
 
 func main() {
-	println("Hello, World!")
+	if len(os.Args) != 2 {
+		fmt.Println("Usage: ./main <seeder_type> (seeder_type is base/magnet)")
+		os.Exit(1)
+	}
+
+	seederType := os.Args[1]
+
+	if seederType != "base" && seederType != "magnet" {
+		fmt.Println("Usage: ./main <seeder_type> (seeder_type is base/magnet)")
+		os.Exit(1)
+	}
 
 	config := torrent.DefaultConfig
-	// config.Host = "159.89.251.24"
+	config.ExtensionProtocolEnabled = (seederType != "base")
+
+	fmt.Printf("Seeder type: %s (extension protocol enabled: %t)\n", seederType, config.ExtensionProtocolEnabled)
 
 	// Random database name every time
 	rand.Seed(time.Now().UnixNano())
@@ -46,7 +58,7 @@ func main() {
 	torrents := []*torrent.Torrent{}
 
 	// List all files that match the pattern /etc/torrent_files/*.torrent
-	
+
 	filePaths, err := filepath.Glob(path.Join(dataDir, "*.torrent"))
 	if err != nil {
 		panic(err)

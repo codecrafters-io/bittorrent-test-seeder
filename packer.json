@@ -1,12 +1,13 @@
 {
   "variables": {
-    "do_api_token": "{{ env `PACKER_DO_TOKEN` }}"
+    "do_api_token": "{{ env `PACKER_DO_TOKEN` }}",
+    "seeder_type": "{{ user `seeder_type` }}"
   },
   "builders": [
     {
       "type": "digitalocean",
       "api_token": "{{ user `do_api_token` }}",
-      "snapshot_name": "bittorrent-test-seeder-v5",
+      "snapshot_name": "bittorrent-test-seeder-{{ user `seeder_type` }}-v1",
       "image": "ubuntu-22-04-x64",
       "region": "lon1",
       "size": "s-1vcpu-1gb",
@@ -23,7 +24,12 @@
     },
     {
       "type": "shell",
-      "inline": ["apt-get update", "apt-get install -y golang"]
+      "inline": [
+        "wget -q https://golang.org/dl/go1.21.0.linux-amd64.tar.gz",
+        "tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz",
+        "echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile",
+        ". /etc/profile"
+      ]
     },
     {
       "type": "shell",
@@ -36,17 +42,22 @@
     },
     {
       "type": "file",
-      "source": "torrent_files",
+      "source": "torrent_files/{{ user `seeder_type` }}",
       "destination": "/etc/torrent_files"
     },
     {
       "type": "file",
-      "source": "bittorrent-test-seeder.service",
+      "source": "bittorrent-test-seeder-{{ user `seeder_type` }}.service",
       "destination": "/etc/systemd/system/bittorrent-test-seeder.service"
     },
     {
       "type": "shell",
-      "inline": ["cd /var/opt/seeder-app", "go get", "go build main.go"]
+      "inline": [
+        "cd /var/opt/seeder-app",
+        ". /etc/profile",
+        "go get",
+        "go build main.go"
+      ]
     },
     {
       "type": "shell",
