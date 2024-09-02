@@ -2,7 +2,6 @@
 set -e
 
 rm -rf torrent_files/**/*.torrent
-rm -rf torrent_files/magnet_links.txt
 
 for seeder_type in base magnet; do
     for folder in torrent_files/$seeder_type/*; do
@@ -19,6 +18,11 @@ for seeder_type in base magnet; do
         fi
 
         mktorrent -d --piece-length=$piece_length -a http://bittorrent-test-tracker.codecrafters.io/announce -o torrent_files/$seeder_type/$file.torrent torrent_files/$seeder_type/$file/$file
-        echo "$seeder_type/$file: $(transmission-show -m torrent_files/$seeder_type/$file.torrent)" >>torrent_files/magnet_links.txt
     done
+done
+
+rm -rf torrent_files/magnet_links.txt
+
+for file in torrent_files/magnet/*.torrent; do
+    echo "$(basename $file): $(transmission-show -m $file)" >>torrent_files/magnet_links.txt
 done
