@@ -3,7 +3,7 @@ Description=Seeder App Service
 
 [Service]
 WorkingDirectory=/var/opt/seeder-app
-ExecStart=/var/opt/seeder-app/main
+ExecStart=/var/opt/seeder-app/main base
 StandardOutput=file:/var/log/seeder-app.log
 StandardError=file:/var/log/seeder-app.log
 Restart=always

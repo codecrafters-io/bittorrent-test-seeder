@@ -1,0 +1,12 @@
+[Unit]
+Description=Seeder App Service
+
+[Service]
+WorkingDirectory=/var/opt/seeder-app
+ExecStart=/var/opt/seeder-app/main magnet
+StandardOutput=file:/var/log/seeder-app.log
+StandardError=file:/var/log/seeder-app.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
