@@ -11,7 +11,8 @@ print_info_hashes:
 	ls torrent_files/*.torrent | xargs -n1 transmission-show | grep Hash
 
 packer_build:
-	packer build packer.json
+	packer build -var "seeder_type=base" packer.json
+	packer build -var "seeder_type=magnet" packer.json
 
 ssh_1:
 	ssh root@$(shell terraform output -raw seeder_ip_1)
