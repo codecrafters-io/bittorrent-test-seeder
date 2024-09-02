@@ -24,7 +24,11 @@
     },
     {
       "type": "shell",
-      "inline": ["apt-get update", "apt-get install -y golang"]
+      "inline": [
+        "wget https://golang.org/dl/go1.21.0.linux-amd64.tar.gz",
+        "tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz",
+        "echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile"
+      ]
     },
     {
       "type": "shell",
