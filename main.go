@@ -24,10 +24,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Printf("Seeder type: %s\n", seederType)
-
 	config := torrent.DefaultConfig
 	config.ExtensionProtocolEnabled = (seederType != "base")
+
+	fmt.Printf("Seeder type: %s (extension protocol enabled: %t)\n", seederType, config.ExtensionProtocolEnabled)
 
 	// Random database name every time
 	rand.Seed(time.Now().UnixNano())
