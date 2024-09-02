@@ -1,11 +1,16 @@
 module codecrafters.io/bittorrent-test-seeder
 
-go 1.19
+go 1.21
+
+toolchain go1.22.4
+
+replace github.com/cenkalti/rain v1.12.8 => github.com/codecrafters-io/rain v0.0.0-20240828142411-c5edc79c3681
+
+require github.com/cenkalti/rain v1.12.8
 
 require (
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cenkalti/log v1.0.0 // indirect
-	github.com/cenkalti/rain v1.12.8 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/google/btree v1.1.2 // indirect
@@ -27,9 +32,9 @@ require (
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/youtube/vitess v3.0.0-rc.3+incompatible // indirect
 	github.com/zeebo/bencode v1.0.0 // indirect
-	go.etcd.io/bbolt v1.3.7 // indirect
-	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
-	golang.org/x/exp v0.0.0-20220325121720-054d8573a5d8 // indirect
-	golang.org/x/sys v0.9.0 // indirect
+	go.etcd.io/bbolt v1.3.10 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
+	golang.org/x/sys v0.20.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	lukechampine.com/blake3 v1.1.6 // indirect
 )
