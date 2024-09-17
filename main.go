@@ -41,9 +41,10 @@ func main() {
 	fmt.Printf("DataDir: %s\n", dataDir)
 
 	config.DataDir = dataDir
+	config.Debug = true
 
 	config.PortBegin = 51413
-	config.PortEnd = 51500
+	config.PortEnd = 51600
 	config.PEXEnabled = false
 	config.RPCEnabled = false
 	config.DHTEnabled = false

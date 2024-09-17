@@ -1,5 +1,5 @@
 serve:
-	go build main.go && TORRENT_FILES_DIR=$$(pwd)/torrent_files ./main
+	go build main.go && TORRENT_FILES_DIR=$$(pwd)/torrent_files/base ./main base
 
 create_torrents:
 	./create-torrents.sh
