@@ -43,13 +43,13 @@ provider "heroku" {
 }
 
 data "digitalocean_droplet_snapshot" "base_seeder_image" {
-  name        = "bittorrent-test-seeder-base-v1"
+  name        = "bittorrent-test-seeder-base-v2"
   most_recent = true
   region      = "lon1"
 }
 
 data "digitalocean_droplet_snapshot" "magnet_seeder_image" {
-  name        = "bittorrent-test-seeder-magnet-v1"
+  name        = "bittorrent-test-seeder-magnet-v2"
   most_recent = true
   region      = "lon1"
 }
