@@ -8,8 +8,8 @@ github.com/cespare/xxhash/v2 v2.1.2 h1:YRXhKfTDauu4ajMg1TPgFO5jnlC2HCbmLXMcTG5cb
 github.com/cespare/xxhash/v2 v2.1.2/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/chihaya/chihaya v1.0.1-0.20191017040149-0a420fe05344 h1:sPhIxxsbeANHva7ZC1SPMactDgb9WxFusp55GX0dd+E=
 github.com/chihaya/chihaya v1.0.1-0.20191017040149-0a420fe05344/go.mod h1:mayPJi46jm0kSeYTNlUFQAkfhPWSgoWwfL6yN7FHeK8=
-github.com/codecrafters-io/rain v0.0.0-20240828142411-c5edc79c3681 h1:4cm8cUOuM8LvU8o38qRsLSRVznqa1ALpqVOIB/g8cJY=
-github.com/codecrafters-io/rain v0.0.0-20240828142411-c5edc79c3681/go.mod h1:rwCupc3aPGpFmCzW8dhW3XMCMOijnm1C/92Pa3Z5jCc=
+github.com/codecrafters-io/rain v0.0.0-20241009211559-a7b77d31863f h1:GFy2iI39QeZZ53EjIE04GQgqZwEPTLTJfGb+kNQW5CA=
+github.com/codecrafters-io/rain v0.0.0-20241009211559-a7b77d31863f/go.mod h1:rwCupc3aPGpFmCzW8dhW3XMCMOijnm1C/92Pa3Z5jCc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/fortytw2/leaktest v1.3.0 h1:u8491cBMTQ8ft8aeV+adlcytMZylmA5nnwwkRZjI8vw=

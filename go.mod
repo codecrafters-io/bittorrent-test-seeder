@@ -4,7 +4,7 @@ go 1.21
 
 toolchain go1.22.4
 
-replace github.com/cenkalti/rain v1.12.8 => github.com/codecrafters-io/rain v0.0.0-20240828142411-c5edc79c3681
+replace github.com/cenkalti/rain v1.12.8 => github.com/codecrafters-io/rain v0.0.0-20241009211559-a7b77d31863f
 
 require github.com/cenkalti/rain v1.12.8
 
